@@ -1,11 +1,19 @@
-const counterValue = document.querySelector('#value');
-   let count = 0
-   
-document.querySelector("[data-action='decrement']").addEventListener("click", () => {
-   count -= 1;
-   counterValue.textContent = count;
-});
-document.querySelector("[data-action='increment']").addEventListener("click", () => {count += 1;
-counterValue.textContent = count;}
-);
+const refs = {
+   counterValue: document.querySelector("#value"),
+   decrementBtn: document.querySelector('[data-action="decrement"]'),
+   incrementBtn: document.querySelector('[data-action="increment"]'),
+};
+let currentValue = 0;
 
+refs.decrementBtn.addEventListener("click", decrementCounter);
+refs.incrementBtn.addEventListener("click", incrementCounter);
+
+function decrementCounter() {
+  currentValue--;
+  refs.counterValue.textContent = currentValue;
+}
+
+function incrementCounter() {
+  currentValue++;
+  refs.counterValue.textContent = currentValue;
+}
